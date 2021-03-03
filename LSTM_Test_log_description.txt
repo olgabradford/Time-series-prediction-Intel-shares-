@@ -1,0 +1,29 @@
+Introduction:
+
+This project is part of my time series prediction SELF LEARNING Tool.
+Material is based on Udacity Data Scientist Nanodegree Program medium.com blogs
+and https://www.analyticsvidhya.com/ documentation
+
+
+1. LSTM in Keras for Inter stock price prediction
+Files:
+intel_shares.csv in data folder - historical stock price data for Intel Inc from Quandl. Alredy in clean format.
+
+
+Folder: model
+model_LSTM.pkl - trained LSTM model in pickle file.
+scaler_LSTM.gz - data scaler object saved in archive file (for use in LSTM_predict.py)
+
+
+Run the following command in the project's root directory to load historial stock price data and output a trained LSTM model and data scaler object file.
+python train.py < historical stock price in CSV filepath > < output model filepath in .pkl > < output data scaler object filepath in .gz > < test size ratio > < training time frame (days) > < offset for training data; if unsure, use training time frame >
+
+LSTM_train.py  for training a model
+python LSTM_train.py data/intel_shares.csv model/model_LSTM.pkl model/scaler_LSTM.gz 0.2 60 60
+
+
+Run the following command in the project's root directory to load model pickle file, data scaler object file and historical stock price. The predicted price will be shown.
+python predictor.py < model filepath > < data scaler object filepath > < historical stock price in CSV filepath >
+
+
+python LSTM_predict.py model/model_LSTM.pkl model/scaler_LSTM.gz data/intel_shares.csv
